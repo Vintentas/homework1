@@ -29,17 +29,17 @@ class FrequencyDictionaryPluginTest {
 
         final Map<String, Integer> wordFrequency = testData.getFrequency();
         for (String line: result.split("\n")) {
-            final Pair<Integer, String> data = splitLine(line);
-            final Integer frequency = wordFrequency.get(data.getValue());
-            assertEquals(frequency, data.getKey(),
-                    () -> format("Word frequency %s %d not match actual frequency %d", data.getValue(), data.getKey(), frequency));
+            final Pair<String, Integer> data = splitLine(line);
+            final Integer frequency = wordFrequency.get(data.getKey());
+            assertEquals(frequency, data.getValue(),
+                    () -> format("Word frequency %s %d not match actual frequency %d", data.getKey(), data.getValue(), frequency));
         }
     }
 
-    private Pair<Integer, String> splitLine(@Nonnull String line) {
+    private Pair<String, Integer> splitLine(@Nonnull String line) {
         final Matcher matcher = SPLITTER.matcher(line);
         if (matcher.find()) {
-            return Pair.of(parseInt(matcher.group(1)), matcher.group(2));
+            return Pair.of(matcher.group(2), parseInt(matcher.group(1)));
         }
         throw new IllegalArgumentException("Result string not match pattern");
     }
