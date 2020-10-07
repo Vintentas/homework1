@@ -13,7 +13,7 @@ public class CounterPlugin
     @Nullable
     @Override
     public String apply(@Nonnull String text) {
-        // TODO: NotImplemented
+        // TODO: NotImplemented -> done
         String changedText = text.replaceAll("\\\\n", "\n").toLowerCase();
         return countLines(changedText) + ";" + countWords(changedText) + ";" + countLetters(changedText);
     }
