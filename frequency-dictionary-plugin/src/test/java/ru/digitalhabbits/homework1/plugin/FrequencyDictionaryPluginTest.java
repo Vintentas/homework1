@@ -39,7 +39,7 @@ class FrequencyDictionaryPluginTest {
     private Pair<String, Integer> splitLine(@Nonnull String line) {
         final Matcher matcher = SPLITTER.matcher(line);
         if (matcher.find()) {
-            return Pair.of(matcher.group(2), parseInt(matcher.group(1)));
+            return Pair.of(matcher.group(1), parseInt(matcher.group(2)));
         }
         throw new IllegalArgumentException("Result string not match pattern");
     }
