@@ -21,7 +21,7 @@ public class FileEngine {
     public boolean writeToFile(@Nonnull String text, @Nonnull String pluginName) {
         // TODO: NotImplemented -> done
         //Создать директорию, если ее нет
-        resultDir.mkdirs();
+        if(!resultDir.exists())resultDir.mkdir();
 
         //путь к файлу
         String fileName = format((resultDir + "/" + RESULT_FILE_PATTERN), pluginName);
